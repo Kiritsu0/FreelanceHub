@@ -1,12 +1,10 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // Icons
 import { FaUser } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
-import { IoIosAddCircle } from "react-icons/io";
+import { IoIosSave } from "react-icons/io";
 import { BiSolidBookContent } from "react-icons/bi";
 import {
   MdOutlineArrowDropDown,
@@ -20,7 +18,18 @@ const Header = () => {
   // Variables
   const [showDropdown, setDropdown] = useState(false);
   const [showEvent, setEvent] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Dropdown
   const dropdown = () => {
@@ -35,7 +44,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center w-screen min-h-14 bg-white">
       <Link to="/">
-        <h1 className="font-medium ml-4 text-2xl hidden sm:block sm:text-2xl md:text-3xl lg:text-4xl">
+        <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
           Freelance<span className="font-bold text-green-800">Hub</span>
         </h1>
       </Link>
@@ -48,13 +57,16 @@ const Header = () => {
             </h2>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-green-800 transition-transform transform translate-x-60 group-hover:translate-x-0"></div>
           </Link>
-        ) : (
+        ) : isSmallScreen ? (
           <div
             onClick={eventDropdown}
             className="group relative flex items-center gap-2 cursor-pointer"
           >
-            {!showEvent && <MdOutlineArrowDropDown className="sm:text-3xl" />}
-            {showEvent && <MdOutlineArrowDropUp className="sm:text-3xl" />}
+            {showEvent ? (
+              <MdOutlineArrowDropUp className="sm:text-3xl" />
+            ) : (
+              <MdOutlineArrowDropDown className="sm:text-3xl" />
+            )}
             <span className="sm:text-2xl">Jobs</span>
             <span className="hidden group-hover:block absolute w-28 text-center m-auto top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Jobs Menu
@@ -66,7 +78,7 @@ const Header = () => {
                   to=""
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
-                  <IoIosAddCircle className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
+                  <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
@@ -74,10 +86,27 @@ const Header = () => {
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
                   <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
-                  <h2 className="font-medium">Create Event</h2>
+                  <h2 className="font-medium">Applied Jobs</h2>
                 </Link>
               </div>
             )}
+          </div>
+        ) : (
+          <div className="flex gap-4">
+            <Link
+              to=""
+              className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
+            >
+              <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
+              <h2 className="font-medium">Saved Jobs</h2>
+            </Link>
+            <Link
+              to=""
+              className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
+            >
+              <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
+              <h2 className="font-medium">Applied Jobs</h2>
+            </Link>
           </div>
         )}
 

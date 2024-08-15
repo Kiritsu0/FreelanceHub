@@ -6,36 +6,41 @@ export const GlobalContext = createContext(null);
 function Context({ children }) {
   const [jobTitle, setJobtitle] = useState("");
   const [location, setLocation] = useState("");
+  const [date, setDate] = useState("Month");
+  const [employmentTypes, setEmploymentTypes] = useState("fulltime;parttime;intern;contractor");
+
   const handleSubmit = async (event) => {
-    console.log("start");
     event.preventDefault();
-    const url = `https://jsearch.p.rapidapi.com/estimated-salary?job_title=${jobTitle}%20Developer&location=New-York%2C%20NY%2C%20USA&radius=100`;
+    const url = `https://jobs-api14.p.rapidapi.com/list?query=${jobTitle}%20Developer&location=${location}%20States&distance=1.0&language=en_GB&remoteOnly=false&datePosted=month&employmentTypes=fulltime%3Bparttime%3Bintern%3Bcontractor&index=0`;
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "6e88e85944msh0569acbaf56dc49p175d57jsn775955742f76",
-        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+        "X-RapidAPI-Key": "6d3ec5f3famsh2c0106939d1dc57p108539jsnc8a76a828650",
+        "X-RapidAPI-Host": "jobs-api14.p.rapidapi.com",
       },
     };
 
     try {
-      console.log("Fetching data...");
       const response = await fetch(url, options);
-      console.log("Response received");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
       const result = await response.json();
       console.log(result);
-      console.log("Finally worked");
     } catch (error) {
-      console.error("Error occurred:", error);
+      console.error(error);
     }
   };
-
   return (
     <GlobalContext.Provider
-      value={[handleSubmit, jobTitle, setJobtitle, location, setLocation]}
+      value={{
+        handleSubmit,
+        jobTitle,
+        setJobtitle,
+        location,
+        setLocation,
+        date,
+        setDate,
+        employmentTypes,
+        setEmploymentTypes,
+      }}
     >
       {children}
     </GlobalContext.Provider>
