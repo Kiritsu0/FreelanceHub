@@ -1,35 +1,48 @@
-const Eventcard = ({ image, title, desc }) => {
-  return (
-    <div className="flex h-full w-full justify-center pt-4 px-2">
-      <div className="flex md:flex-row flex-col h-68 w-[40rem] items-center rounded-md border-2 bg-gray-200 shadow-xl">
-        <div className="md:h-full md:w-2/5 w-1/1">
-          <img
-            src={image}
-            alt="Description of the image"
-            className="object-cover w-full obje h-full md:rounded-l-md rounded-md"
-          />
-        </div>
+import { GlobalContext } from "../context";
+import { useContext } from "react";
 
-        <div className="mt-5 flex flex-1 flex-col px-6 pb-5">
-          <h1 className="text-lg line-clamp-2 sm:text-xl font-semibold">
-            {title}
-          </h1>
-          <article className="sm:text-base text-sm line-clamp-3 mb-3">
-            {desc}
+const Jobcard = () => {
+  const { data } = useContext(GlobalContext);
+  return (
+    <div className="flex flex-col items-center justify-center gap-5 h-full w-full pt-4">
+      {data.map((job, index) => (
+        <div
+          key={index}
+          className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md border-2 bg-gray-200 shadow-xl"
+        >
+          <div className="flex items-center gap-2">
+            <img src={job.image} className="max-w-10" alt="" />
+            <h1 className="self-start text-lg line-clamp-2 sm:text-2xl font-semibold">
+              {job.title}
+            </h1>
+          </div>
+          <article className="sm:text-base text-start text-sm line-clamp-3 mb-3">
+            {job.description}
           </article>
           <div className="mt-2 flex justify-between">
-            <h3 className="sm:text-sm font-semibold">Place: New York</h3>
-            <h3 className="sm:text-sm font-semibold">Date: 1/1/2024</h3>
+            <h3 className="sm:text-lg text-sm font-semibold">
+              Place: {job.location}
+            </h3>
+            <h3 className="sm:text-lg text-sm font-semibold">
+              Date: {job.datePosted}
+            </h3>
           </div>
-          <div className="flex justify-end">
-            <button className="mt-2 w-4/12 rounded-md bg-green-600 p-2 text-white hover:bg-green-700">
-              Join Me
-            </button>
+          <div className="flex justify-between items-center">
+            <span className="sm:text-lg text-sm font-semibold">
+              Company: {job.company}
+            </span>
+            <a
+              href={job.jobProviders[0].url}
+              target="_blank"
+              className="mt-2 w-4/12 rounded-md bg-green-600 p-2 text-white hover:bg-green-700"
+            >
+              <button>Apply</button>
+            </a>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
 
-export default Eventcard;
+export default Jobcard;

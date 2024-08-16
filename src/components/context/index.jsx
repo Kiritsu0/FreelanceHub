@@ -4,27 +4,39 @@ import { createContext, useState } from "react";
 export const GlobalContext = createContext(null);
 
 function Context({ children }) {
-  const [jobTitle, setJobtitle] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("Month");
   const [employmentTypes, setEmploymentTypes] = useState("fulltime;parttime;intern;contractor");
+  const [data, setData] =  useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     const url = `https://jobs-api14.p.rapidapi.com/list?query=${jobTitle}%20Developer&location=${location}%20States&distance=1.0&language=en_GB&remoteOnly=false&datePosted=month&employmentTypes=fulltime%3Bparttime%3Bintern%3Bcontractor&index=0`;
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "6d3ec5f3famsh2c0106939d1dc57p108539jsnc8a76a828650",
+        "X-RapidAPI-Key": "6e4a90beeamsh4fc998abbee9eb8p1b895fjsn295e49ef32fe",
         "X-RapidAPI-Host": "jobs-api14.p.rapidapi.com",
       },
     };
 
     try {
+      setLoading(true)
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
+      if (result?.jobs) {
+        setData(result.jobs);
+        setLoading(false);
+        setJobTitle("");
+        setLocation("");
+      }
+      console.log(result.jobs);
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
@@ -33,13 +45,16 @@ function Context({ children }) {
       value={{
         handleSubmit,
         jobTitle,
-        setJobtitle,
+        setJobTitle,
         location,
         setLocation,
         date,
         setDate,
         employmentTypes,
         setEmploymentTypes,
+        data,
+        loading,
+        setLoading,
       }}
     >
       {children}
