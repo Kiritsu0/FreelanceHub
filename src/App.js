@@ -5,6 +5,7 @@ import Choose from "./components/choose";
 import Volunteer from "./components/home/volunteer";
 import Organization from "./components/home/organization";
 import Context from "./components/context";
+import JobInfo from "./components/jobInfo";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Choose />} />
             <Route element={<Layout />}>
               <Route path="/volunteer" element={<Volunteer />} />
+              <Route path="/JobInfo" element={<JobInfo />} />
               <Route path="/organization" element={<Organization />} />
             </Route>
           </Routes>

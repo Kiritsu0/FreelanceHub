@@ -1,4 +1,4 @@
-import Jobcard from "../../eventsCards";
+import Jobcard from "../../jobsCards";
 import { GlobalContext } from "../../context";
 import { useContext, useEffect } from "react";
 import { IoIosSearch } from "react-icons/io";
@@ -17,9 +17,6 @@ const Volunteer = () => {
     handleSubmit,
   } = useContext(GlobalContext);
 
-  useEffect(() => {
-    handleSubmit();
-  }, []);
   return (
     <div className="mt-3 pb-5">
       <div className="flex justify-center">
