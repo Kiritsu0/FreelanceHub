@@ -75,7 +75,7 @@ const Header = () => {
             {showEvent && (
               <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm w-40 rounded-md">
                 <Link
-                  to=""
+                  to="/savedJobs"
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
                   <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
@@ -94,7 +94,7 @@ const Header = () => {
         ) : (
           <div className="flex gap-4">
             <Link
-              to=""
+              to="/savedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
               <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />

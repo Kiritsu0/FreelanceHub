@@ -7,9 +7,34 @@ function Context({ children }) {
   const [jobTitle, setJobTitle] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("Month");
-  const [employmentTypes, setEmploymentTypes] = useState("fulltime;parttime;intern;contractor");
-  const [data, setData] =  useState([]);
+  const [employmentTypes, setEmploymentTypes] = useState(
+    "fulltime;parttime;intern;contractor"
+  );
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [heartColors, setHeartColors] = useState({});
+  const [savedJobs, setSavedJobs] = useState([]);
+
+  const handleHeartColor = (jobId) => {
+    const currentItem = data.find((job) => job.id === jobId);
+
+    setHeartColors((prevHeartColors) => {
+      const newHeartColors = { ...prevHeartColors };
+      newHeartColors[jobId] = newHeartColors[jobId] === "" ? "#22c55e" : "";
+  
+      setSavedJobs((prevSavedJobs) => {
+        if (newHeartColors[jobId] === "#22c55e") {
+          if (!prevSavedJobs.some((item) => item.id === jobId)) {
+            return [...prevSavedJobs, currentItem];
+          }
+        } else {
+          return prevSavedJobs.filter((item) => item.id !== jobId);
+        }
+        return prevSavedJobs;
+      });
+      return newHeartColors;
+    });
+  };
 
   const handleSubmit = async (event) => {
     if (event) {
@@ -25,7 +50,7 @@ function Context({ children }) {
     };
 
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch(url, options);
       const result = await response.json();
       if (result?.jobs) {
@@ -55,6 +80,9 @@ function Context({ children }) {
         data,
         loading,
         setLoading,
+        heartColors,
+        handleHeartColor,
+        savedJobs,
       }}
     >
       {children}
