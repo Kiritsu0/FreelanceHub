@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { GlobalContext } from "../context";
 
 // Icons
 import { FaUser } from "react-icons/fa";
@@ -14,8 +15,10 @@ import {
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 
+
 const Header = () => {
   // Variables
+  const { volunteerPage } = useContext(GlobalContext);
   const [showDropdown, setDropdown] = useState(false);
   const [showEvent, setEvent] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
@@ -43,7 +46,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center w-screen min-h-14 bg-white">
-      <Link to="/">
+      <Link to={volunteerPage ? "/volunteer" : "/organization"}>
         <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
           Freelance<span className="font-bold text-green-800">Hub</span>
         </h1>
@@ -82,7 +85,7 @@ const Header = () => {
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
-                  to=""
+                  to="/appliedJobs"
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
                   <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
@@ -101,7 +104,7 @@ const Header = () => {
               <h2 className="font-medium">Saved Jobs</h2>
             </Link>
             <Link
-              to=""
+              to="/appliedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
               <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
@@ -116,7 +119,7 @@ const Header = () => {
             className="bg-green-800 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
           >
             <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
-            <h4>Guest</h4>
+            <h4 className="text-white">Guest</h4>
             <span className="hidden group-hover:block absolute top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Account
             </span>

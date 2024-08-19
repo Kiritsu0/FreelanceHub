@@ -7,6 +7,7 @@ import Organization from "./components/home/organization";
 import Context from "./components/context";
 import JobInfo from "./components/jobInfo";
 import SavedJobs from "./components/savedJobs";
+import AppliedJobs from "./components/appliedJobs";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/volunteer" element={<Volunteer />} />
               <Route path="/jobInfo" element={<JobInfo />} />
               <Route path="/savedJobs" element={<SavedJobs />} />
+              <Route path="/appliedJobs" element={<AppliedJobs />} />
               <Route path="/organization" element={<Organization />} />
             </Route>
           </Routes>

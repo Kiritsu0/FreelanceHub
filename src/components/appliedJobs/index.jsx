@@ -1,24 +1,25 @@
 import { GlobalContext } from "../context";
 import { useContext } from "react";
-import { ImFilesEmpty } from "react-icons/im";
 import { IoLocation } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { ImFilesEmpty } from "react-icons/im";
 
-const Jobcard = () => {
-  const { data, heartColors, handleHeartColor, setApplied } = useContext(GlobalContext);
+function AppliedJobs() {
+  const { appliedJobs, heartColors, handleHeartColor } = useContext(GlobalContext);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5 h-full w-full pt-4">
-      {data.length === 0 ? (
+    <div className="flex flex-col items-center justify-center gap-5 h-full w-full my-5 pt-4">
+      {appliedJobs.length > 0 ? <h1 className="text-4xl font-bold">Applied Jobs</h1> : ""}
+      {appliedJobs.length === 0 ? (
         <div className="absolute top-1/2 font-bold mt-14 md:mt-0">
           <span className="md:text-4xl text-3xl">
-            Not Found, Please Search Again!
+            No Applied Jobs
           </span>
           <ImFilesEmpty className="mx-auto mt-5 text-4xl md:text-5xl" />
         </div>
       ) : null}
-      {data.map((job, index) => (
+      {appliedJobs.map((job, index) => (
         <div
           key={job.id}
           className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md bg-white hover:bg-gray-200 shadow-xl"
@@ -65,13 +66,6 @@ const Jobcard = () => {
               href={job.jobProviders[0].url}
               target="_blank"
               className="mt-2 w-4/12 rounded-md bg-green-600 p-2 text-white hover:bg-green-700"
-              onClick={() => setApplied((previous) => { 
-                if (!previous.includes(job)) {
-                  return [...previous, job]
-                } else {
-                  return previous;
-                }
-              })}
             >
               <button>Apply</button>
             </a>
@@ -79,7 +73,7 @@ const Jobcard = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Jobcard;
+export default AppliedJobs

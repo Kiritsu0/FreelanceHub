@@ -14,6 +14,8 @@ function Context({ children }) {
   const [loading, setLoading] = useState(false);
   const [heartColors, setHeartColors] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
+  const [appliedJobs, setApplied] = useState([]);
+  const [volunteerPage, setVolunteerPage] = useState(false);
 
   const handleHeartColor = (jobId) => {
     const currentItem = data.find((job) => job.id === jobId);
@@ -83,6 +85,10 @@ function Context({ children }) {
         heartColors,
         handleHeartColor,
         savedJobs,
+        appliedJobs,
+        setApplied,
+        volunteerPage,
+        setVolunteerPage,
       }}
     >
       {children}

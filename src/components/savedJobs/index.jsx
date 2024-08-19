@@ -9,7 +9,7 @@ function SavedJobs() {
   const { heartColors, handleHeartColor, savedJobs } = useContext(GlobalContext);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5 h-full w-full pt-4">
+    <div className="flex flex-col items-center justify-center gap-5 h-full w-full my-5 pt-4">
       {savedJobs.length > 0 ? <h1 className="text-4xl font-bold">Saved Jobs</h1> : ""}
       {savedJobs.length === 0 ? (
         <div className="absolute top-1/2 font-bold mt-14 md:mt-0">
