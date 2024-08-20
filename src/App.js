@@ -1,13 +1,13 @@
 import "./App.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
-import Choose from "./components/choose";
-import Volunteer from "./components/home/volunteer";
-import Organization from "./components/home/organization";
-import Context from "./components/context";
-import JobInfo from "./components/jobInfo";
-import SavedJobs from "./components/savedJobs";
-import AppliedJobs from "./components/appliedJobs";
+import Choose from "./pages/choose";
+import Volunteer from "./pages/home/freelancer";
+import Organization from "./pages/home/organization";
+import Context from "./context";
+import JobInfo from "./pages/jobInfo";
+import SavedJobs from "./pages/savedJobs";
+import AppliedJobs from "./pages/appliedJobs";
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Choose />} />
             <Route element={<Layout />}>
-              <Route path="/volunteer" element={<Volunteer />} />
-              <Route path="/jobInfo" element={<JobInfo />} />
-              <Route path="/savedJobs" element={<SavedJobs />} />
-              <Route path="/appliedJobs" element={<AppliedJobs />} />
+              <Route path="/freelancer" element={<Volunteer />} />
+              <Route path="/freelancer/jobInfo" element={<JobInfo />} />
+              <Route path="/freelancer/savedJobs" element={<SavedJobs />} />
+              <Route path="/freelancer/appliedJobs" element={<AppliedJobs />} />
               <Route path="/organization" element={<Organization />} />
             </Route>
           </Routes>

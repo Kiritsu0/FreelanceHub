@@ -1,4 +1,4 @@
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 import { useContext } from "react";
 import { ImFilesEmpty } from "react-icons/im";
 import { IoLocation } from "react-icons/io5";
@@ -25,7 +25,7 @@ const Jobcard = () => {
         >
           <div className="flex items-center justify-between gap-2">
             <Link
-              to="/jobInfo"
+              to="/freelancer/jobInfo"
               state={{
                 title: job.title,
                 description: job.description,

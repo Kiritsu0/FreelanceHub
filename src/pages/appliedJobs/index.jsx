@@ -1,25 +1,25 @@
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 import { useContext } from "react";
 import { IoLocation } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { ImFilesEmpty } from "react-icons/im";
 
-function SavedJobs() {
-  const { heartColors, handleHeartColor, savedJobs } = useContext(GlobalContext);
+function AppliedJobs() {
+  const { appliedJobs, heartColors, handleHeartColor } = useContext(GlobalContext);
 
   return (
     <div className="flex flex-col items-center justify-center gap-5 h-full w-full my-5 pt-4">
-      {savedJobs.length > 0 ? <h1 className="text-4xl font-bold">Saved Jobs</h1> : ""}
-      {savedJobs.length === 0 ? (
+      {appliedJobs.length > 0 ? <h1 className="text-4xl font-bold">Applied Jobs</h1> : ""}
+      {appliedJobs.length === 0 ? (
         <div className="absolute top-1/2 font-bold mt-14 md:mt-0">
           <span className="md:text-4xl text-3xl">
-            No Saved Jobs
+            No Applied Jobs
           </span>
           <ImFilesEmpty className="mx-auto mt-5 text-4xl md:text-5xl" />
         </div>
       ) : null}
-      {savedJobs.map((job) => (
+      {appliedJobs.map((job, index) => (
         <div
           key={job.id}
           className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md bg-white hover:bg-gray-200 shadow-xl"
@@ -76,4 +76,4 @@ function SavedJobs() {
   )
 }
 
-export default SavedJobs;
+export default AppliedJobs

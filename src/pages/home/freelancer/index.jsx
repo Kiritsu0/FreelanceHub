@@ -1,8 +1,9 @@
-import Jobcard from "../../jobsCards";
-import { GlobalContext } from "../../context";
-import { useContext, useEffect } from "react";
+import Jobcard from "../../../components/jobsCards";
+import { GlobalContext } from "../../../context";
+import { useContext } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { Grid } from "react-loader-spinner";
+
 const Volunteer = () => {
   const {
     jobTitle,

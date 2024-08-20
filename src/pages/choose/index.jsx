@@ -1,7 +1,7 @@
 import { MdHail } from "react-icons/md";
 import { VscOrganization } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 import { useContext } from "react";
 
 const Choose = () => {
@@ -18,7 +18,7 @@ const Choose = () => {
           Choose your role below to get started:
         </p>
         <div className="flex gap-8 justify-center">
-          <Link to="/volunteer" onClick={() => setVolunteerPage(true)}>
+          <Link to="/freelancer" onClick={() => setVolunteerPage(true)}>
             <MdHail className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Freelancer</strong>
           </Link>

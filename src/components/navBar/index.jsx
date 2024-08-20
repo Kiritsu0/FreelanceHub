@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 
 // Icons
 import { FaUser } from "react-icons/fa";
@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center w-screen min-h-14 bg-white">
-      <Link to={volunteerPage ? "/volunteer" : "/organization"}>
+      <Link to={volunteerPage ? "/freelancer" : "/organization"}>
         <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
           Freelance<span className="font-bold text-green-800">Hub</span>
         </h1>
@@ -78,14 +78,14 @@ const Header = () => {
             {showEvent && (
               <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm w-40 rounded-md">
                 <Link
-                  to="/savedJobs"
+                  to="/freelancer/savedJobs"
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
                   <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
-                  to="/appliedJobs"
+                  to="/freelancer/appliedJobs"
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
                 >
                   <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
@@ -97,14 +97,14 @@ const Header = () => {
         ) : (
           <div className="flex gap-4">
             <Link
-              to="/savedJobs"
+              to="/freelancer/savedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
               <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
               <h2 className="font-medium">Saved Jobs</h2>
             </Link>
             <Link
-              to="/appliedJobs"
+              to="/freelancer/appliedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
               <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />

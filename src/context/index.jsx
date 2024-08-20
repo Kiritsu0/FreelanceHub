@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const GlobalContext = createContext(null);
 
@@ -16,6 +16,14 @@ function Context({ children }) {
   const [savedJobs, setSavedJobs] = useState([]);
   const [appliedJobs, setApplied] = useState([]);
   const [volunteerPage, setVolunteerPage] = useState(false);
+
+  useEffect(() => {
+    const initialHeartColors = {};
+    data.forEach((job) => {
+      initialHeartColors[job.id] = "";
+    });
+    setHeartColors(initialHeartColors);
+  }, [data]);
 
   const handleHeartColor = (jobId) => {
     const currentItem = data.find((job) => job.id === jobId);
@@ -61,7 +69,6 @@ function Context({ children }) {
         setJobTitle("");
         setLocation("");
       }
-      console.log(result.jobs);
     } catch (error) {
       setLoading(false);
       console.error(error);
