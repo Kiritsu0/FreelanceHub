@@ -11,14 +11,14 @@ import {
   MdOutlineArrowDropDown,
   MdOutlineArrowDropUp,
   MdDarkMode,
+  MdLightMode,
   MdSettings,
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 
-
 const Header = () => {
   // Variables
-  const { volunteerPage } = useContext(GlobalContext);
+  const { volunteerPage, darkMode, setDarkMode } = useContext(GlobalContext);
   const [showDropdown, setDropdown] = useState(false);
   const [showEvent, setEvent] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
@@ -45,10 +45,10 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center w-screen min-h-14 bg-white">
+    <header className="flex justify-between items-center w-screen min-h-14 dark:text-white dark:bg-slate-900 bg-white">
       <Link to={volunteerPage ? "/freelancer" : "/organization"}>
         <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
-          Freelance<span className="font-bold text-green-800">Hub</span>
+          Freelance<span className="font-bold dark:text-green-500 text-green-800">Hub</span>
         </h1>
       </Link>
 
@@ -76,19 +76,19 @@ const Header = () => {
             </span>
 
             {showEvent && (
-              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm w-40 rounded-md">
+              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 dark:bg-slate-900 bg-white text-sm w-40 rounded-md">
                 <Link
                   to="/freelancer/savedJobs"
-                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
+                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-700 rounded-t-md"
                 >
-                  <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
+                  <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
                   to="/freelancer/appliedJobs"
-                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 rounded-md"
+                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-700 rounded-md"
                 >
-                  <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl text-green-800" />
+                  <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   <h2 className="font-medium">Applied Jobs</h2>
                 </Link>
               </div>
@@ -100,14 +100,14 @@ const Header = () => {
               to="/freelancer/savedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
-              <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
+              <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-green-500 text-green-800" />
               <h2 className="font-medium">Saved Jobs</h2>
             </Link>
             <Link
               to="/freelancer/appliedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
-              <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl text-green-800" />
+              <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-green-500 text-green-800" />
               <h2 className="font-medium">Applied Jobs</h2>
             </Link>
           </div>
@@ -116,7 +116,7 @@ const Header = () => {
         <div className="flex items-center gap-5 mr-8">
           <div
             onClick={dropdown}
-            className="bg-green-800 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
+            className="bg-green-800 dark:bg-green-500 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
           >
             <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
             <h4 className="text-white">Guest</h4>
@@ -124,12 +124,12 @@ const Header = () => {
               Account
             </span>
             {showDropdown && (
-              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white text-sm h-48 w-36 rounded-md">
+              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-900 text-sm w-36 rounded-md">
                 <Link
                   to=""
-                  className="flex gap-2 items-center p-2 hover:bg-slate-200 rounded-t-md"
+                  className="flex gap-2 items-center p-2 hover:bg-slate-700 rounded-t-md"
                 >
-                  <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />
+                  <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Logout
                 </Link>
                 <hr />
@@ -139,9 +139,9 @@ const Header = () => {
                       ? "/home/volunteer/settings"
                       : "/home/organization/settings"
                   }
-                  className="flex gap-2 items-center p-2 hover:bg-slate-200"
+                  className="flex gap-2 items-center p-2 hover:bg-slate-700"
                 >
-                  <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />
+                  <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Settings
                 </Link>
                 <hr />
@@ -151,19 +151,23 @@ const Header = () => {
                       ? "/home/volunteer/profile"
                       : "/home/organization/profile"
                   }
-                  className="flex gap-2 items-center p-2 hover:bg-slate-200"
+                  className="flex gap-2 items-center p-2 hover:bg-slate-700"
                 >
-                  <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />
+                  <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Profile
                 </Link>
                 <hr />
-                <Link
-                  to=""
-                  className="flex gap-2 items-center p-2 hover:bg-slate-200"
+                <div
+                  className="flex gap-2 items-center p-2 rounded-b-md hover:bg-slate-700"
+                  onClick={() => setDarkMode(!darkMode)}
                 >
-                  <MdDarkMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl" />
-                  Dark Mode
-                </Link>
+                  {darkMode ? (
+                    <MdLightMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  ) : (
+                    <MdDarkMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  )}
+                  {darkMode ? "Light Mode" : "Dark Mode"}
+                </div>
               </div>
             )}
           </div>

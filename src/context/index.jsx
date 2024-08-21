@@ -16,6 +16,7 @@ function Context({ children }) {
   const [savedJobs, setSavedJobs] = useState([]);
   const [appliedJobs, setApplied] = useState([]);
   const [volunteerPage, setVolunteerPage] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const initialHeartColors = {};
@@ -96,9 +97,15 @@ function Context({ children }) {
         setApplied,
         volunteerPage,
         setVolunteerPage,
+        darkMode,
+        setDarkMode,
       }}
     >
-      {children}
+      <div className={darkMode ? "dark" : ""}>
+        <div className="bg-green-500 dark:bg-green-700 min-h-screen">
+          {children}
+        </div>
+      </div>
     </GlobalContext.Provider>
   );
 }

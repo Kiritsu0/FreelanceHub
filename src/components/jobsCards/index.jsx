@@ -21,7 +21,7 @@ const Jobcard = () => {
       {data.map((job, index) => (
         <div
           key={job.id}
-          className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md bg-white hover:bg-gray-200 shadow-xl"
+          className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md dark:bg-slate-900 bg-white dark:hover:bg-slate-700 hover:bg-gray-200 shadow-xl"
         >
           <div className="flex items-center justify-between gap-2">
             <Link
@@ -44,10 +44,10 @@ const Jobcard = () => {
             <FaHeart
               onClick={() => handleHeartColor(job.id)}
               style={{ color: heartColors[job.id] || "" }}
-              className="cursor-pointer flex-shrink-0"
+              className="cursor-pointer flex-shrink-0 dark:text-white"
             />
           </div>
-          <article className="sm:text-base text-start text-sm line-clamp-3 mb-3">
+          <article className="sm:text-base text-start dark:text-white text-sm line-clamp-3 mb-3">
             {job.description}
           </article>
           <div className="mt-2 flex justify-between">
@@ -57,14 +57,14 @@ const Jobcard = () => {
             <h3 className="text-sm text-gray-500">Posted {job.datePosted}</h3>
           </div>
           <div className="flex justify-between items-center">
-            <span className="sm:text-lg flex gap-2 items-center text-sm font-semibold">
+            <span className="sm:text-lg flex dark:text-white gap-2 items-center text-sm font-semibold">
               <img src={job.image} className="max-w-10 rounded-full" alt="" />
               {job.company}
             </span>
             <a
               href={job.jobProviders[0].url}
               target="_blank"
-              className="mt-2 w-4/12 rounded-md bg-green-600 p-2 text-white hover:bg-green-700"
+              className="mt-2 w-4/12 rounded-md text-center bg-green-600 p-2 text-white hover:bg-green-700"
               onClick={() => setApplied((previous) => { 
                 if (!previous.includes(job)) {
                   return [...previous, job]

@@ -11,7 +11,7 @@ import AppliedJobs from "./pages/appliedJobs";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <HashRouter>
         <Context>
           <Routes>
