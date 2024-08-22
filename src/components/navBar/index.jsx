@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GlobalContext } from "../../context";
 
@@ -24,6 +24,10 @@ const Header = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
   const location = useLocation();
 
+  // Refs for dropdown menus
+  const dropdownRef = useRef(null);
+  const eventDropdownRef = useRef(null);
+
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 640);
@@ -32,6 +36,29 @@ const Header = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setDropdown(false);
+      }
+      if (
+        eventDropdownRef.current &&
+        !eventDropdownRef.current.contains(event.target)
+      ) {
+        setEvent(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   // Dropdown
@@ -64,6 +91,7 @@ const Header = () => {
           <div
             onClick={eventDropdown}
             className="group relative flex items-center gap-2 cursor-pointer"
+            ref={eventDropdownRef}
           >
             {showEvent ? (
               <MdOutlineArrowDropUp className="sm:text-3xl" />
@@ -79,14 +107,14 @@ const Header = () => {
               <div className="absolute top-12 left-1/2 transform -translate-x-1/2 dark:bg-slate-900 bg-white text-sm w-40 rounded-md">
                 <Link
                   to="/freelancer/savedJobs"
-                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-700 rounded-t-md"
+                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-t-md"
                 >
                   <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
                   to="/freelancer/appliedJobs"
-                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-700 rounded-md"
+                  className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md"
                 >
                   <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   <h2 className="font-medium">Applied Jobs</h2>
@@ -117,6 +145,7 @@ const Header = () => {
           <div
             onClick={dropdown}
             className="bg-green-800 dark:bg-green-500 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
+            ref={dropdownRef}
           >
             <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
             <h4 className="text-white">Guest</h4>
@@ -127,38 +156,30 @@ const Header = () => {
               <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-900 text-sm w-36 rounded-md">
                 <Link
                   to=""
-                  className="flex gap-2 items-center p-2 hover:bg-slate-700 rounded-t-md"
+                  className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-t-md"
                 >
                   <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Logout
                 </Link>
                 <hr />
                 <Link
-                  to={
-                    location.pathname === "/home/volunteer"
-                      ? "/home/volunteer/settings"
-                      : "/home/organization/settings"
-                  }
-                  className="flex gap-2 items-center p-2 hover:bg-slate-700"
+                  to={""}
+                  className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
                   <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Settings
                 </Link>
                 <hr />
                 <Link
-                  to={
-                    location.pathname === "/home/volunteer"
-                      ? "/home/volunteer/profile"
-                      : "/home/organization/profile"
-                  }
-                  className="flex gap-2 items-center p-2 hover:bg-slate-700"
+                  to={"/profile"}
+                  className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
                   <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
                   Profile
                 </Link>
                 <hr />
                 <div
-                  className="flex gap-2 items-center p-2 rounded-b-md hover:bg-slate-700"
+                  className="flex gap-2 items-center p-2 rounded-b-md hover:bg-slate-200 dark:hover:bg-slate-700"
                   onClick={() => setDarkMode(!darkMode)}
                 >
                   {darkMode ? (

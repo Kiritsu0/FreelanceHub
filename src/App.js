@@ -8,6 +8,7 @@ import Context from "./context";
 import JobInfo from "./pages/jobInfo";
 import SavedJobs from "./pages/savedJobs";
 import AppliedJobs from "./pages/appliedJobs";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/freelancer/jobInfo" element={<JobInfo />} />
               <Route path="/freelancer/savedJobs" element={<SavedJobs />} />
               <Route path="/freelancer/appliedJobs" element={<AppliedJobs />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/organization" element={<Organization />} />
             </Route>
           </Routes>
