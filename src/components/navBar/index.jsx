@@ -18,7 +18,7 @@ import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   // Variables
-  const { volunteerPage, darkMode, setDarkMode } = useContext(GlobalContext);
+  const { volunteerPage, darkMode, setDarkMode, profileImage, userName } = useContext(GlobalContext);
   const [showDropdown, setDropdown] = useState(false);
   const [showEvent, setEvent] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
@@ -40,10 +40,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdown(false);
       }
       if (
@@ -75,7 +72,10 @@ const Header = () => {
     <header className="flex justify-between items-center w-screen min-h-14 dark:text-white dark:bg-slate-900 bg-white">
       <Link to={volunteerPage ? "/freelancer" : "/organization"}>
         <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
-          Freelance<span className="font-bold dark:text-green-500 text-green-800">Hub</span>
+          Freelance
+          <span className="font-bold dark:text-green-500 text-green-800">
+            Hub
+          </span>
         </h1>
       </Link>
 
@@ -147,8 +147,18 @@ const Header = () => {
             className="bg-green-800 dark:bg-green-500 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
             ref={dropdownRef}
           >
-            <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
-            <h4 className="text-white">Guest</h4>
+            {profileImage ? (
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="rounded-full w-9"
+              />
+            ) : (
+              <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
+            )}
+            <h1 className="text-white truncate max-w-xs">
+              {userName}
+            </h1>
             <span className="hidden group-hover:block absolute top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Account
             </span>

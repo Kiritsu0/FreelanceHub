@@ -17,6 +17,10 @@ function Context({ children }) {
   const [appliedJobs, setApplied] = useState([]);
   const [volunteerPage, setVolunteerPage] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [userName, setUserName] = useState("Guest");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [profileImage, setProfileImage] = useState("");
 
   useEffect(() => {
     const initialHeartColors = {};
@@ -99,6 +103,14 @@ function Context({ children }) {
         setVolunteerPage,
         darkMode,
         setDarkMode,
+        userName,
+        setUserName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        profileImage,
+        setProfileImage,
       }}
     >
       <div className={darkMode ? "dark" : ""}>
