@@ -15,7 +15,7 @@ function Context({ children }) {
   const [heartColors, setHeartColors] = useState({});
   const [savedJobs, setSavedJobs] = useState([]);
   const [appliedJobs, setApplied] = useState([]);
-  const [volunteerPage, setVolunteerPage] = useState(false);
+  const [pageState, setPageState] = useState("freelancer");
   const [darkMode, setDarkMode] = useState(false);
   const [userName, setUserName] = useState("Guest");
   const [email, setEmail] = useState("");
@@ -99,8 +99,8 @@ function Context({ children }) {
         savedJobs,
         appliedJobs,
         setApplied,
-        volunteerPage,
-        setVolunteerPage,
+        pageState,
+        setPageState,
         darkMode,
         setDarkMode,
         userName,

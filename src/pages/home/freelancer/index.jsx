@@ -4,7 +4,7 @@ import SearchBar from "../../../components/searchBar";
 import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
 
-const Volunteer = () => {
+const Freelancer = () => {
   const { loading } = useContext(GlobalContext);
 
   return (
@@ -30,4 +30,4 @@ const Volunteer = () => {
   );
 };
 
-export default Volunteer;
+export default Freelancer;

@@ -5,7 +5,7 @@ import { GlobalContext } from "../../context";
 import { useContext } from "react";
 
 const Choose = () => {
-  const { setVolunteerPage } = useContext(GlobalContext);
+  const { setPageState } = useContext(GlobalContext);
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center overflow-hidden">
@@ -18,12 +18,12 @@ const Choose = () => {
           Choose your role below to get started:
         </p>
         <div className="flex gap-8 justify-center">
-          <Link to="/freelancer" onClick={() => setVolunteerPage(true)}>
+          <Link to="/freelancer" onClick={() => setPageState("freelancer")} className="text-center">
             <MdHail className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Freelancer</strong>
           </Link>
 
-          <Link to="/organization">
+          <Link to="/organization" onClick={() => setPageState("organization")} className="text-center">
             <VscOrganization className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Client</strong>
           </Link>
