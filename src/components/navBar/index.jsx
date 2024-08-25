@@ -166,7 +166,7 @@ const Header = () => {
               <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
             )}
             {/* Display username */}
-            <h1 className="text-white truncate max-w-xs">{userName}</h1>
+            <h1 className="text-white truncate max-w-xs capitalize">{userName}</h1>
             {/* Tooltip for account */}
             <span className="hidden group-hover:block absolute top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Account
@@ -175,7 +175,7 @@ const Header = () => {
             {showDropdown && (
               <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-900 text-sm w-36 rounded-md">
                 <Link
-                  to=""
+                  to="/"
                   className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-t-md"
                 >
                   <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />

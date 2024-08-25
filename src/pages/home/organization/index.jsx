@@ -8,7 +8,6 @@ const Organization = () => {
 
   return (
     <div className="mt-3 pb-5">
-      <Createjobs />
       {loading ? (
         <div className="absolute top-1/2 transition loader-centered">
           <Grid
@@ -23,7 +22,7 @@ const Organization = () => {
           />
         </div>
       ) : (
-        ""
+        <Createjobs />
       )}
     </div>
   );

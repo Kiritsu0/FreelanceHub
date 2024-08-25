@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../context";
 
 function CreateJobs() {
+  const { createdJobsData, setCreatedJobsData } = useContext(GlobalContext);
+
   const [formData, setFormData] = useState({
     title: "",
     location: "",
@@ -49,6 +52,18 @@ function CreateJobs() {
       placeholder: "Upload company logo",
     },
     {
+      label: "Salary Range",
+      id: "salary",
+      type: "number",
+      placeholder: "Enter salary",
+    },
+    {
+      label: "Employment Type",
+      id: "employmentType",
+      type: "text",
+      placeholder: "fulltime/parttime/intern/contractor",
+    },
+    {
       label: "Description",
       id: "description",
       type: "textarea",
@@ -57,42 +72,77 @@ function CreateJobs() {
     },
   ];
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newJob = {
+      id: createdJobsData.length + 1,
+      title: formData.title,
+      location: formData.location,
+      company: formData.company,
+      image: formData.image,
+      description: formData.description,
+    };
+    setCreatedJobsData(prevJobs => [...prevJobs, newJob]);
+    // Clear form fields after submission
+    setFormData({
+      title: "",
+      location: "",
+      company: "",
+      image: "",
+      description: "",
+    });
+  };
   return (
     <div className="mx-5">
-      <form className="mx-auto max-w-[50rem] p-3 dark:bg-green-800 bg-white grid grid-cols-1 md:grid-cols-2 gap-14 rounded-md">
-        {fields.map(({ label, id, type, placeholder, colSpan }) => (
-          <div
-            key={id}
-            className={`flex flex-col gap-2 ${colSpan ? "md:col-span-2" : ""}`}
-          >
-            <label
-              htmlFor={id}
-              className="text-2xl font-semibold dark:text-white"
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto max-w-[50rem] p-3 dark:bg-green-800 flex flex-col bg-white rounded-md"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {fields.map(({ label, id, type, placeholder, colSpan }) => (
+            <div
+              key={id}
+              className={`flex flex-col gap-2 ${
+                colSpan ? "md:col-span-2" : ""
+              }`}
             >
-              {label}
-            </label>
-            {type === "textarea" ? (
-              <textarea
-                id={id}
-                placeholder={placeholder}
-                value={formData[id]}
-                onChange={handleChange}
-                className="p-2 text-xl bg-slate-300 rounded-md focus:outline-none"
-              />
-            ) : (
-              <input
-                type={type}
-                id={id}
-                placeholder={placeholder}
-                value={type === "file" ? undefined : formData[id]}
-                onChange={handleChange}
-                className={`p-2 text-xl bg-slate-300 rounded-md focus:outline-none ${
-                  type === "file" ? "h-12" : "h-9"
-                }`}
-              />
-            )}
-          </div>
-        ))}
+              <label
+                htmlFor={id}
+                className="text-2xl font-semibold dark:text-white"
+              >
+                {label}
+              </label>
+              {type === "textarea" ? (
+                <textarea
+                  id={id}
+                  placeholder={placeholder}
+                  value={formData[id]}
+                  onChange={handleChange}
+                  required
+                  className="p-2 text-xl bg-slate-300 rounded-md focus:outline-none"
+                />
+              ) : (
+                <input
+                  type={type}
+                  id={id}
+                  placeholder={placeholder}
+                  value={type === "file" ? undefined : formData[id]}
+                  onChange={handleChange}
+                  required
+                  className={`p-2 text-xl bg-slate-300 rounded-md focus:outline-none w-full ${
+                    type === "file" ? "h-12" : "h-9"
+                  }`}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <button
+          type="submit"
+          className="bg-green-500 rounded-md mt-5 p-2 font-semibold text-xl hover:bg-green-600"
+        >
+          Create Job
+        </button>
       </form>
     </div>
   );

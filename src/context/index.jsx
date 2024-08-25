@@ -21,6 +21,7 @@ function Context({ children }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profileImage, setProfileImage] = useState("");
+  const [createdJobsData, setCreatedJobsData] = useState([]);
 
   useEffect(() => {
     const initialHeartColors = {};
@@ -36,7 +37,7 @@ function Context({ children }) {
     setHeartColors((prevHeartColors) => {
       const newHeartColors = { ...prevHeartColors };
       newHeartColors[jobId] = newHeartColors[jobId] === "" ? "#22c55e" : "";
-  
+
       setSavedJobs((prevSavedJobs) => {
         if (newHeartColors[jobId] === "#22c55e") {
           if (!prevSavedJobs.some((item) => item.id === jobId)) {
@@ -111,6 +112,8 @@ function Context({ children }) {
         setPassword,
         profileImage,
         setProfileImage,
+        createdJobsData,
+        setCreatedJobsData,
       }}
     >
       <div className={darkMode ? "dark" : ""}>

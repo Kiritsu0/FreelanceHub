@@ -36,7 +36,8 @@ const Profile = () => {
     }
   };
 
-  const handleSave = (field) => {
+  const handleSave = (event, field) => {
+    event.preventDefault();
     if (field === "name") setUserName(formData.name);
     if (field === "email") setEmail(formData.email);
     if (field === "password") setPassword(formData.password);
@@ -114,7 +115,7 @@ const Profile = () => {
                 />
                 <button
                   type="submit"
-                  onClick={() => handleSave(id)}
+                  onClick={(event) => handleSave(event, id)}
                   className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700"
                 >
                   Save
