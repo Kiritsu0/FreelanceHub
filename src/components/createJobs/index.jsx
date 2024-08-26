@@ -1,14 +1,17 @@
 import React, { useState, useContext } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { GlobalContext } from "../../context";
 
 function CreateJobs() {
-  const { createdJobsData, setCreatedJobsData } = useContext(GlobalContext);
+  const { setCreatedJobsData } = useContext(GlobalContext);
 
   const [formData, setFormData] = useState({
     title: "",
     location: "",
     company: "",
     image: "",
+    salary: "",
+    employmentType: "",
     description: "",
   });
 
@@ -55,7 +58,7 @@ function CreateJobs() {
       label: "Salary Range",
       id: "salary",
       type: "number",
-      placeholder: "Enter salary",
+      placeholder: "Enter salary in USD",
     },
     {
       label: "Employment Type",
@@ -75,11 +78,13 @@ function CreateJobs() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newJob = {
-      id: createdJobsData.length + 1,
+      id: uuidv4(),
       title: formData.title,
       location: formData.location,
       company: formData.company,
       image: formData.image,
+      salary: formData.salary,
+      employmentType: formData.employmentType,
       description: formData.description,
     };
     setCreatedJobsData(prevJobs => [...prevJobs, newJob]);
@@ -89,7 +94,10 @@ function CreateJobs() {
       location: "",
       company: "",
       image: "",
+      salary: "",
+      employmentType: "",
       description: "",
+
     });
   };
   return (

@@ -22,7 +22,7 @@ function AppliedJobs() {
       {appliedJobs.map((job, index) => (
         <div
           key={job.id}
-          className="flex flex-col gap-3 h-68 max-w-[40rem] mx-3 p-2 rounded-md dark:bg-slate-900 bg-white dark:hover:bg-slate-700 hover:bg-gray-200 shadow-xl"
+          className="flex flex-col gap-3 h-68 min-w-[20rem] max-w-[40rem] mx-3 p-2 rounded-md dark:bg-slate-900 bg-white dark:hover:bg-slate-700 hover:bg-gray-200 shadow-xl"
         >
           <div className="flex items-center justify-between gap-2">
             <Link

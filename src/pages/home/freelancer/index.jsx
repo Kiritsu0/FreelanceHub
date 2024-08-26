@@ -4,6 +4,7 @@ import SearchBar from "../../../components/searchBar";
 import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
 
+
 const Freelancer = () => {
   const { loading } = useContext(GlobalContext);
 

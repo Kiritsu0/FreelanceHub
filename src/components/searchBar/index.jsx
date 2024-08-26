@@ -39,9 +39,9 @@ const SearchBar = () => {
             className="bg-white outline-none h-10 px-2 rounded-full"
           >
             <option value="month">Month</option>
-            <option value="week">Week</option>
+            <option value="Week">Week</option>
             <option value="3days">3 Days</option>
-            <option value="today">Today</option>
+            <option value="Today">Today</option>
           </select>
           <select
             onChange={(event) => setEmploymentTypes(event.target.value)}

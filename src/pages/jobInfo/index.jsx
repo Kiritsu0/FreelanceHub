@@ -15,8 +15,8 @@ function JobInfo() {
   } = location.state;
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white dark:bg-slate-900 max-w-4xl w-full m-5 rounded-lg shadow-lg p-8">
+    <div className="flex items-center justify-center">
+      <div className="bg-white dark:bg-slate-900 max-w-4xl m-5 rounded-lg shadow-lg p-8">
         <div className="flex items-center justify-between border-b pb-4 mb-4">
           <div>
             <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 dark:text-white">
@@ -37,7 +37,7 @@ function JobInfo() {
             </div>
           </div>
           <div className="text-right">
-            <p className="text-gray-600 dark:text-white text-sm">Posted {date}</p>
+            <p className="text-gray-600 dark:text-white text-sm">Posted {date || "N/A"}</p>
           </div>
         </div>
 
