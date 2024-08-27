@@ -20,7 +20,7 @@ const Header = () => {
   // Destructuring values from the GlobalContext to access global state variables
   const { pageState, darkMode, setDarkMode, profileImage, userName } =
     useContext(GlobalContext);
-  
+
   // Local state variables for controlling dropdown visibility and screen size
   const [showDropdown, setDropdown] = useState(false); // Controls account dropdown visibility
   const [showEvent, setEvent] = useState(false); // Controls job event dropdown visibility
@@ -119,11 +119,19 @@ const Header = () => {
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
-                  to={pageState === "freelancer" ? "/freelancer/appliedJobs" : "/organization/createdJobs"}
+                  to={
+                    pageState === "freelancer"
+                      ? "/freelancer/appliedJobs"
+                      : "/organization/createdJobs"
+                  }
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md"
                 >
                   <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
-                  <h2 className="font-medium">{pageState === "freelancer" ? "Applied Jobs" : "Created Jobs"}</h2>
+                  <h2 className="font-medium">
+                    {pageState === "freelancer"
+                      ? "Applied Jobs"
+                      : "Created Jobs"}
+                  </h2>
                 </Link>
               </div>
             )}
@@ -139,11 +147,17 @@ const Header = () => {
               <h2 className="font-medium">Saved Jobs</h2>
             </Link>
             <Link
-              to={pageState === "freelancer" ? "/freelancer/appliedJobs" : "/organization/createdJobs"}
+              to={
+                pageState === "freelancer"
+                  ? "/freelancer/appliedJobs"
+                  : "/organization/createdJobs"
+              }
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
               <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-green-500 text-green-800" />
-              <h2 className="font-medium">{pageState === "freelancer" ? "Applied Jobs" : "Created Jobs"}</h2>
+              <h2 className="font-medium">
+                {pageState === "freelancer" ? "Applied Jobs" : "Created Jobs"}
+              </h2>
             </Link>
           </div>
         )}
@@ -166,7 +180,9 @@ const Header = () => {
               <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
             )}
             {/* Display username */}
-            <h1 className="text-white truncate max-w-xs capitalize">{userName}</h1>
+            <h1 className="text-white truncate max-w-xs capitalize">
+              {userName}
+            </h1>
             {/* Tooltip for account */}
             <span className="hidden group-hover:block absolute top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Account

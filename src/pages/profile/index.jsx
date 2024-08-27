@@ -4,6 +4,7 @@ import { BiEdit } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
 const Profile = () => {
+  // Extract values and setter functions from GlobalContext
   const {
     userName,
     setUserName,
@@ -15,6 +16,7 @@ const Profile = () => {
     setProfileImage,
   } = useContext(GlobalContext);
 
+  // Local state to handle form data
   const [formData, setFormData] = useState({
     name: userName,
     email: email,
@@ -22,8 +24,10 @@ const Profile = () => {
     profileImage: "",
   });
 
+  // Handle input changes
   const handleChange = (e) => {
     const { id, value, files } = e.target;
+    // Handle file input separately for profile image
     if (id === "profileImage" && files.length > 0) {
       const file = files[0];
       const reader = new FileReader();
@@ -36,6 +40,7 @@ const Profile = () => {
     }
   };
 
+  // Save changes based on which field is updated
   const handleSave = (event, field) => {
     event.preventDefault();
     if (field === "name") setUserName(formData.name);
@@ -46,10 +51,13 @@ const Profile = () => {
 
   return (
     <div className="mx-5">
-      <div className="max-w-[50rem] mx-auto flex items-center justify-between mt-5 p-3 text-center bg-slate-300 dark:bg-green-900">
+      {/* Profile Header */}
+      <div className="max-w-[50rem] mx-auto rounded-t-md flex items-center justify-between mt-5 p-3 text-center bg-slate-300 dark:bg-green-900">
         {profileImage ? (
+          // Display profile image if available
           <img src={profileImage} alt="Profile" className="rounded-full w-20" />
         ) : (
+          // Default user icon if no profile image
           <FaUser className="bg-gray-200 rounded-full p-1 text-5xl lg:text-6xl" />
         )}
         <h1 className="font-semibold text-3xl capitalize text-black dark:text-white">
@@ -58,7 +66,7 @@ const Profile = () => {
       </div>
 
       {/* Form Fields */}
-      <div className="max-w-[50rem] mx-auto bg-white dark:bg-green-800 p-5">
+      <div className="max-w-[50rem] mx-auto bg-white dark:bg-green-800 p-5 rounded-b-md">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
           {[
             {

@@ -4,10 +4,12 @@ import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
 
 const Organization = () => {
+  // Extract the loading state from GlobalContext
   const { loading } = useContext(GlobalContext);
 
   return (
     <div className="mt-3 pb-5">
+      {/* Conditional rendering: Show loader if data is loading */}
       {loading ? (
         <div className="absolute top-1/2 transition loader-centered">
           <Grid
@@ -22,6 +24,7 @@ const Organization = () => {
           />
         </div>
       ) : (
+        // Render Createjobs component when not loading
         <Createjobs />
       )}
     </div>

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import Header from "../navBar";
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
@@ -10,7 +10,7 @@ function Layout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
