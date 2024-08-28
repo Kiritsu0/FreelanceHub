@@ -15,7 +15,7 @@ const Jobcard = () => {
   } = useContext(GlobalContext);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5 h-full w-full pt-4">
+    <div className="flex flex-col items-center justify-center gap-5 h-full w-full">
       {/* If there is no job data, display a message and icon */}
       {data.length === 0 ? (
         <div className="absolute top-1/2 font-bold mt-14 md:mt-0 text-center">

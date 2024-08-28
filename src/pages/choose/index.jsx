@@ -29,7 +29,7 @@ const Choose = () => {
             onClick={() => setPageState("freelancer")}
             className="text-center"
           >
-            <MdHail className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
+            <MdHail className="rounded-full text-5xl md:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Freelancer</strong>
           </Link>
 
@@ -39,7 +39,7 @@ const Choose = () => {
             onClick={() => setPageState("organization")}
             className="text-center"
           >
-            <VscOrganization className="rounded-full text-4xl sm:text-5xl lg:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
+            <VscOrganization className="rounded-full text-5xl md:text-6xl text-green-600 border-2 border-black p-1 mx-auto hover:bg-green-400" />
             <strong>Client</strong>
           </Link>
         </div>

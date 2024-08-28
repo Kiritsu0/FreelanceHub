@@ -75,7 +75,7 @@ const Profile = () => {
               type: "text",
               placeholder: "Enter your Name",
               minLength: 3,
-              maxLength: 15,
+              maxLength: 12,
             },
             {
               label: "Profile Image",

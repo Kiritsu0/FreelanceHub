@@ -98,11 +98,11 @@ const Header = () => {
           >
             {/* Toggle icons for job dropdown */}
             {showEvent ? (
-              <MdOutlineArrowDropUp className="sm:text-3xl" />
+              <MdOutlineArrowDropUp className="text-2xl" />
             ) : (
-              <MdOutlineArrowDropDown className="sm:text-3xl" />
+              <MdOutlineArrowDropDown className="text-2xl" />
             )}
-            <span className="sm:text-2xl">Jobs</span>
+            <span className="text-xl font-semibold">Jobs</span>
             {/* Tooltip for job menu */}
             <span className="hidden group-hover:block absolute w-28 text-center m-auto top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Jobs Menu
@@ -166,7 +166,7 @@ const Header = () => {
         <div className="flex items-center gap-5 mr-8">
           <div
             onClick={dropdown}
-            className="bg-green-800 dark:bg-green-500 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 px-2 rounded-3xl hover:shadow-xl"
+            className="bg-green-800 dark:bg-green-500 max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"
             ref={dropdownRef}
           >
             {/* Profile image or default user icon */}
@@ -177,10 +177,10 @@ const Header = () => {
                 className="rounded-full w-9"
               />
             ) : (
-              <FaUser className="bg-gray-200 rounded-full p-1 text-2xl sm:text-2xl md:text-3xl lg:text-4xl" />
+              <FaUser className="bg-gray-200 rounded-full p-1 text-2xl md:text-3xl lg:text-4xl" />
             )}
             {/* Display username */}
-            <h1 className="text-white truncate max-w-xs capitalize">
+            <h1 className="text-white line-clamp-1 capitalize">
               {userName}
             </h1>
             {/* Tooltip for account */}
