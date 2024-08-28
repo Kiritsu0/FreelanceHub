@@ -166,7 +166,7 @@ const Header = () => {
         <div className="flex items-center gap-5 mr-8">
           <div
             onClick={dropdown}
-            className="bg-green-800 dark:bg-green-500 max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"
+            className="bg-green-800 dark:bg-green-500 max-w-24 md:max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"
             ref={dropdownRef}
           >
             {/* Profile image or default user icon */}
