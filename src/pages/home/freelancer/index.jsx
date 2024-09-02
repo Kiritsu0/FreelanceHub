@@ -3,6 +3,7 @@ import { GlobalContext } from "../../../context";
 import SearchBar from "../../../components/searchBar";
 import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
+import Footer from "../../../components/footer";
 
 const Freelancer = () => {
   // Extract the loading state from GlobalContext
@@ -29,7 +30,10 @@ const Freelancer = () => {
         </div>
       ) : (
         // Render Jobcard component when not loading
-        <Jobcard />
+        <div>
+          <Jobcard />
+          <Footer />
+        </div>
       )}
     </div>
   );

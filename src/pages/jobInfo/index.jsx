@@ -54,19 +54,19 @@ function JobInfo() {
             <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
               Job Type
             </h3>
-            <p className="text-green-500">{employmentType}</p>
+            <p className="text-blue-500">{employmentType}</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
               Salary
             </h3>
-            <p className="text-green-500">{salary || "N/A"}</p>
+            <p className="text-blue-500">{salary || "N/A"}</p>
           </div>
         </div>
 
         {/* Job description section */}
         <div className="mb-6 rounded-md p-5">
-          <h3 className="text-xl font-semibold text-gray-800 dark:text-green-500">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-blue-500">
             Job Description
           </h3>
           <p className="text-gray-600 dark:text-white mt-2 text-start leading-7">
@@ -80,7 +80,7 @@ function JobInfo() {
             href={applyLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white text-lg font-semibold py-2 px-6 rounded-md hover:bg-green-700 transition duration-200"
+            className="inline-block bg-blue-600 text-white text-lg font-semibold py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200"
           >
             Apply Now
           </a>

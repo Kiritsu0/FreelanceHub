@@ -46,7 +46,7 @@ const Jobcard = () => {
                   employmentType: job.employmentType,
                   salary: job.salaryRange,
                 }}
-                className="self-start text-green-500 hover:underline text-lg line-clamp-2 sm:text-2xl font-semibold"
+                className="self-start text-blue-500 hover:underline text-lg line-clamp-2 sm:text-2xl font-semibold"
               >
                 {job.title}
               </Link>
@@ -64,7 +64,7 @@ const Jobcard = () => {
             <div className="mt-2 flex justify-between">
               {/* Job location with an icon */}
               <h3 className="sm:text-lg flex items-center text-gray-500 gap-2 text-sm font-medium">
-                <IoLocation className="text-green-500" /> {job.location}
+                <IoLocation className="text-blue-500" /> {job.location}
               </h3>
               {/* Job posted date */}
               <h3 className="text-sm text-gray-500">
@@ -81,7 +81,7 @@ const Jobcard = () => {
               <a
                 href={job.jobProviders[0].url}
                 target="_blank"
-                className="mt-2 w-4/12 rounded-md text-center bg-green-600 p-2 text-white hover:bg-green-700"
+                className="mt-2 w-4/12 rounded-md text-center bg-blue-600 p-2 text-white hover:bg-blue-700"
                 onClick={() =>
                   setApplied((previous) =>
                     // Add job to the list of applied jobs if not already applied

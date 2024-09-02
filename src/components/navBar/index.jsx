@@ -77,12 +77,12 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center w-screen min-h-14 dark:text-white dark:bg-slate-900 bg-white">
+    <header className="flex justify-between items-center w-screen min-h-14 opacity-80 dark:text-white dark:bg-slate-900 bg-white">
       {/* link to either freelancer or organization page based on pageState */}
       <Link to={pageState === "freelancer" ? "/freelancer" : "/organization"}>
         <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
           Freelance
-          <span className="font-bold dark:text-green-500 text-green-800">
+          <span className="font-bold text-blue-800">
             Hub
           </span>
         </h1>
@@ -115,7 +115,7 @@ const Header = () => {
                   to="/freelancer/savedJobs"
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-t-md"
                 >
-                  <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  <IoIosSave className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   <h2 className="font-medium">Saved Jobs</h2>
                 </Link>
                 <Link
@@ -126,7 +126,7 @@ const Header = () => {
                   }
                   className="relative cursor-pointer group overflow-hidden flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md"
                 >
-                  <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  <BiSolidBookContent className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   <h2 className="font-medium">
                     {pageState === "freelancer"
                       ? "Applied Jobs"
@@ -143,7 +143,7 @@ const Header = () => {
               to="/freelancer/savedJobs"
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
-              <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-green-500 text-green-800" />
+              <IoIosSave className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-blue-500 text-blue-800" />
               <h2 className="font-medium">Saved Jobs</h2>
             </Link>
             <Link
@@ -154,7 +154,7 @@ const Header = () => {
               }
               className="relative text-xl cursor-pointer group overflow-hidden flex gap-2 items-center"
             >
-              <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-green-500 text-green-800" />
+              <BiSolidBookContent className="p-1 cursor-pointer text-2xl md:text-3xl dark:text-blue-500 text-blue-800" />
               <h2 className="font-medium">
                 {pageState === "freelancer" ? "Applied Jobs" : "Created Jobs"}
               </h2>
@@ -166,7 +166,7 @@ const Header = () => {
         <div className="flex items-center gap-5 mr-8">
           <div
             onClick={dropdown}
-            className="bg-green-800 dark:bg-green-500 max-w-24 md:max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"
+            className="bg-blue-800 dark:bg-blue-500 max-w-24 md:max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"
             ref={dropdownRef}
           >
             {/* Profile image or default user icon */}
@@ -194,7 +194,7 @@ const Header = () => {
                   to="/"
                   className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-t-md"
                 >
-                  <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  <CiLogout className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   Logout
                 </Link>
                 <hr />
@@ -202,7 +202,7 @@ const Header = () => {
                   to={""}
                   className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
-                  <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   Settings
                 </Link>
                 <hr />
@@ -210,7 +210,7 @@ const Header = () => {
                   to={"/profile"}
                   className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
-                  <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                  <CgProfile className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   Profile
                 </Link>
                 <hr />
@@ -220,9 +220,9 @@ const Header = () => {
                   onClick={() => setDarkMode(!darkMode)}
                 >
                   {darkMode ? (
-                    <MdLightMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                    <MdLightMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   ) : (
-                    <MdDarkMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-green-500 text-green-800" />
+                    <MdDarkMode className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />
                   )}
                   {darkMode ? "Light Mode" : "Dark Mode"}
                 </div>

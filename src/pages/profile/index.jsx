@@ -2,6 +2,7 @@ import { GlobalContext } from "../../context";
 import { useContext, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
+import Footer from "../../components/footer";
 
 const Profile = () => {
   // Extract values and setter functions from GlobalContext
@@ -66,7 +67,7 @@ const Profile = () => {
       </div>
 
       {/* Form Fields */}
-      <div className="max-w-[50rem] mx-auto bg-white dark:bg-green-800 p-5 rounded-b-md">
+      <div className="max-w-[50rem] mx-auto bg-white dark:bg-blue-800 p-5 rounded-b-md">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
           {[
             {
@@ -108,7 +109,7 @@ const Profile = () => {
                 <h2 className="text-2xl font-semibold text-black dark:text-white">
                   {label}
                 </h2>
-                <BiEdit className="text-2xl text-green-500" />
+                <BiEdit className="text-2xl text-blue-500" />
               </label>
               <div className="flex justify-between gap-3">
                 <input
@@ -124,7 +125,7 @@ const Profile = () => {
                 <button
                   type="submit"
                   onClick={(event) => handleSave(event, id)}
-                  className="bg-green-600 rounded-md py-1 px-2 font-semibold hover:bg-green-700"
+                  className="bg-blue-600 rounded-md py-1 px-2 font-semibold hover:bg-blue-700"
                 >
                   Save
                 </button>
@@ -133,6 +134,7 @@ const Profile = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

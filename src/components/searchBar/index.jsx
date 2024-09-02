@@ -19,7 +19,7 @@ const SearchBar = () => {
     <div className="flex justify-center mr-5 md:mr-0 mb-4">
       {/* Form submission triggers the handleSubmit function */}
       <form onSubmit={handleSubmit} className="">
-        <div className="flex md:flex-row flex-col md:dark:bg-green-500 md:bg-green-800 gap-3 p-2 rounded-full  w-full ml-4 sm:ml-0">
+        <div className="flex md:flex-row flex-col md:dark:bg-blue-800 md:bg-blue-500 gap-3 p-2 rounded-full  w-full ml-4 sm:ml-0">
           {/* Input field for job title search */}
           <input
             placeholder="Domain"

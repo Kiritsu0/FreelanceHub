@@ -2,6 +2,7 @@ import { GlobalContext } from "../../../context";
 import Createjobs from "../../../components/createJobs";
 import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
+import Footer from "../../../components/footer";
 
 const Organization = () => {
   // Extract the loading state from GlobalContext
@@ -25,7 +26,10 @@ const Organization = () => {
         </div>
       ) : (
         // Render Createjobs component when not loading
-        <Createjobs />
+        <div>
+          <Createjobs />
+          <Footer />
+        </div>
       )}
     </div>
   );

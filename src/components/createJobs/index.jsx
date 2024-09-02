@@ -120,7 +120,7 @@ function CreateJobs() {
     <div className="mx-5">
       <form
         onSubmit={handleSubmit}
-        className="mx-auto max-w-[50rem] p-3 dark:bg-green-800 flex flex-col bg-white rounded-md"
+        className="mx-auto max-w-[50rem] p-3 dark:bg-blue-800 flex flex-col bg-white rounded-md"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {fields.map(({ label, id, type, placeholder, colSpan }) => (
@@ -165,7 +165,7 @@ function CreateJobs() {
         </div>
         <button
           type="submit"
-          className="bg-green-500 rounded-md mt-5 p-2 font-semibold text-xl hover:bg-green-600"
+          className="bg-blue-500 rounded-md mt-5 p-2 font-semibold text-xl hover:bg-blue-600"
         >
           Create Job
         </button>

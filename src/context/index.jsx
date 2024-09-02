@@ -47,11 +47,11 @@ function Context({ children }) {
     setHeartColors((prevHeartColors) => {
       const newHeartColors = { ...prevHeartColors };
       // Toggle heart color between green and default
-      newHeartColors[jobId] = newHeartColors[jobId] === "" ? "#22c55e" : "";
+      newHeartColors[jobId] = newHeartColors[jobId] === "" ? "#3b82f6" : "";
 
       // Update savedJobs state based on the heart color toggle
       setSavedJobs((prevSavedJobs) => {
-        if (newHeartColors[jobId] === "#22c55e") {
+        if (newHeartColors[jobId] === "#3b82f6") {
           if (!prevSavedJobs.some((item) => item.id === jobId)) {
             return [...prevSavedJobs, currentItem]; // Add job to savedJobs if not already saved
           }
@@ -141,7 +141,12 @@ function Context({ children }) {
       <div className={darkMode ? "dark" : ""}>
         {" "}
         {/* Conditional class for dark mode */}
-        <div className="bg-green-500 dark:bg-green-700 min-h-screen">
+        <div
+          className="min-h-screen bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}/background-image2.jpg)`,
+          }}
+        >
           {" "}
           {/* Main container with dynamic background based on dark mode */}
           {children} {/* Render children components */}

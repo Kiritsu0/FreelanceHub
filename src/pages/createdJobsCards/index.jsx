@@ -38,7 +38,7 @@ function CreatedJobsCards() {
                   employmentType: job.employmentType,
                   salary: `${job.salary} $`,
                 }}
-                className="self-start text-green-500 hover:underline text-lg line-clamp-2 sm:text-2xl font-semibold"
+                className="self-start text-blue-500 hover:underline text-lg line-clamp-2 sm:text-2xl font-semibold"
               >
                 {job.title}
               </Link>
@@ -57,9 +57,9 @@ function CreatedJobsCards() {
             {/* Location and date posted details */}
             <div className="mt-2 flex justify-between">
               <h3 className="sm:text-lg flex items-center text-gray-500 gap-2 text-sm font-medium">
-                <IoLocation className="text-green-500" /> {job.location}
+                <IoLocation className="text-blue-500" /> {job.location}
               </h3>
-              <h3 className="text-sm text-gray-500">Posted {job.datePosted}</h3>
+              <h3 className="text-sm text-gray-500">Posted {job.datePosted || "N/A"}</h3>
             </div>
 
             {/* Company details and apply button */}
@@ -71,7 +71,7 @@ function CreatedJobsCards() {
               <a
                 href=""
                 target="_blank"
-                className="mt-2 w-4/12 rounded-md text-center bg-green-600 p-2 text-white hover:bg-green-700"
+                className="mt-2 w-4/12 rounded-md text-center bg-blue-600 p-2 text-white hover:bg-blue-700"
               >
                 <button>Apply</button>
               </a>
