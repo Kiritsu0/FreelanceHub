@@ -59,8 +59,8 @@ const TopUsers = () => {
                 alt={user.name}
                 className="rounded-full w-40 h-40 object-cover mb-4"
               />
-              <div className="text-xl font-bold text-white">{user.name}</div>
-              <div className="text-white">{user.earnings}</div>
+              <div className="text-xl font-bold">{user.name}</div>
+              <div className="">{user.earnings}</div>
               <div className="text-blue-500 font-bold">{user.other}</div>
             </div>
           </div>

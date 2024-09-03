@@ -117,7 +117,7 @@ function CreateJobs() {
 
   // Return the form UI
   return (
-    <div className="mx-5">
+    <div className="mx-5 mb-20">
       <form
         onSubmit={handleSubmit}
         className="mx-auto max-w-[50rem] p-3 dark:bg-blue-800 flex flex-col bg-white rounded-md"

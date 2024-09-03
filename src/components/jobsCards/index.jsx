@@ -18,7 +18,7 @@ const Jobcard = () => {
     <div className="flex flex-col items-center justify-center gap-5 h-full w-full">
       {/* If there is no job data, display a message and icon */}
       {data.length === 0 ? (
-        <div className="absolute top-1/2 font-bold mt-14 md:mt-0 text-center">
+        <div className="flex flex-col justify-center h-96 font-bold mt-14 md:mt-0 text-center">
           <span className="md:text-4xl text-3xl">
             Not Found, Please Search Again!
           </span>

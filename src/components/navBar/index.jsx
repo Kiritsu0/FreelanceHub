@@ -77,15 +77,16 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center w-screen min-h-14 opacity-80 dark:text-white dark:bg-slate-900 bg-white">
+    <header className="flex justify-between items-center w-screen min-h-14 opacity-90 dark:text-white dark:bg-slate-900 bg-white">
       {/* link to either freelancer or organization page based on pageState */}
       <Link to={pageState === "freelancer" ? "/freelancer" : "/organization"}>
-        <h1 className="font-medium ml-4 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
-          Freelance
-          <span className="font-bold text-blue-800">
-            Hub
-          </span>
-        </h1>
+        <img
+          src={`${process.env.PUBLIC_URL}/${
+            darkMode ? "dark_logo.png" : "light_logo.png"
+          }`}
+          alt="FreelanceHub"
+          className="w-52 md:w-60 ml-4 text-white"
+        />
       </Link>
 
       <div className="flex items-center gap-5">
@@ -180,9 +181,7 @@ const Header = () => {
               <FaUser className="bg-gray-200 rounded-full p-1 text-2xl md:text-3xl lg:text-4xl" />
             )}
             {/* Display username */}
-            <h1 className="text-white line-clamp-1 capitalize">
-              {userName}
-            </h1>
+            <h1 className="text-white line-clamp-1 capitalize">{userName}</h1>
             {/* Tooltip for account */}
             <span className="hidden group-hover:block absolute top-14 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white p-2 rounded-md text-sm">
               Account
