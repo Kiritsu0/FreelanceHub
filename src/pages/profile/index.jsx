@@ -53,7 +53,7 @@ const Profile = () => {
   return (
     <div className="mx-5">
       {/* Profile Header */}
-      <div className="max-w-[50rem] mx-auto rounded-t-md flex items-center justify-between mt-5 p-3 text-center bg-slate-300 dark:bg-green-900">
+      <div className="max-w-[50rem] mx-auto rounded-t-md flex items-center justify-between mt-5 p-3 text-center bg-slate-300 dark:bg-blue-900">
         {profileImage ? (
           // Display profile image if available
           <img src={profileImage} alt="Profile" className="rounded-full w-20" />

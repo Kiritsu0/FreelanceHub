@@ -198,7 +198,7 @@ const Header = () => {
                 </Link>
                 <hr />
                 <Link
-                  to={""}
+                  to={"/"}
                   className="flex gap-2 items-center p-2 hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
                   <MdSettings className="p-1 cursor-pointer text-2xl sm:text-2xl lg:text-3xl dark:text-blue-500 text-blue-800" />

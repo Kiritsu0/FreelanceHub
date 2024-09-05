@@ -10,13 +10,14 @@ import SavedJobs from "./pages/savedJobs";
 import AppliedJobs from "./pages/appliedJobs";
 import Profile from "./pages/profile";
 import CreatedJobsCards from "./pages/createdJobsCards";
-
+import Loader from "./components/loader";
 
 function App() {
   return (
     <div>
       <HashRouter>
         <Context>
+          <Loader />
           <Routes>
             <Route path="/" element={<Choose />} />
             <Route element={<Layout />}>
