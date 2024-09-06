@@ -3,39 +3,17 @@ import { v4 as uuidv4 } from "uuid"; // Importing the uuid library to generate u
 import { GlobalContext } from "../../context"; // Importing the global context to access the state
 
 function CreateJobs() {
-  // Accessing the setCreatedJobsData function from GlobalContext to update the job data
   const { setCreatedJobsData } = useContext(GlobalContext);
 
-  // Initializing formData state to hold the values of the form fields
   const [formData, setFormData] = useState({
     title: "",
     location: "",
     company: "",
     image: "",
-    salary: "",
+    salary: "", // Keep salary as just a number
     employmentType: "",
     description: "",
   });
-
-  // handleChange function updates the formData state as the user inputs values
-  const handleChange = (e) => {
-    const { id, value, files } = e.target;
-
-    // If the "image" field is being updated and a file is selected
-    if (id === "image" && files.length > 0) {
-      const file = files[0];
-      const reader = new FileReader(); // FileReader to convert the image file to a Base64 string
-
-      // Once the file is read, update the formData with the Base64 string
-      reader.onloadend = () => {
-        setFormData({ ...formData, [id]: reader.result });
-      };
-      reader.readAsDataURL(file); // Start reading the file as a Data URL (Base64)
-    } else {
-      // For other fields, simply update the formData state with the input value
-      setFormData({ ...formData, [id]: value });
-    }
-  };
 
   // Array of field configurations to dynamically generate the form inputs
   const fields = [
@@ -84,26 +62,36 @@ function CreateJobs() {
     },
   ];
 
-  // handleSubmit function to handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+  const handleChange = (e) => {
+    const { id, value, files } = e.target;
+    if (id === "image" && files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, [id]: reader.result });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setFormData({ ...formData, [id]: value });
+    }
+  };
 
-    // Create a new job object using the formData and a unique ID
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const newJob = {
       id: uuidv4(),
       title: formData.title,
       location: formData.location,
       company: formData.company,
       image: formData.image,
-      salary: formData.salary,
+      salaryRange: `${formData.salary}$`,
       employmentType: formData.employmentType,
       description: formData.description,
     };
 
-    // Update the job data in the global context
     setCreatedJobsData((prevJobs) => [...prevJobs, newJob]);
 
-    // Clear the form fields after submission by resetting formData
+    // Reset the formData fields
     setFormData({
       title: "",
       location: "",
@@ -115,7 +103,6 @@ function CreateJobs() {
     });
   };
 
-  // Return the form UI
   return (
     <div className="mx-5 mb-20">
       <form
@@ -137,7 +124,6 @@ function CreateJobs() {
                 {label}
               </label>
               {type === "textarea" ? (
-                // Render a textarea if the field type is "textarea"
                 <textarea
                   id={id}
                   placeholder={placeholder}
@@ -147,12 +133,11 @@ function CreateJobs() {
                   className="p-2 text-xl bg-slate-300 rounded-md focus:outline-none"
                 />
               ) : (
-                // Render an input field for other field types
                 <input
                   type={type}
                   id={id}
                   placeholder={placeholder}
-                  value={type === "file" ? undefined : formData[id]}
+                  value={type === "file" ? undefined : formData[id]} // Ensure correct value handling
                   onChange={handleChange}
                   required
                   className={`p-2 text-xl bg-slate-300 rounded-md focus:outline-none w-full ${

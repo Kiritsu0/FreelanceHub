@@ -12,7 +12,7 @@ const Choose = () => {
 
   return (
     <div
-      className="bg-cover bg-center min-h-screen overflow-hidden"
+      className="bg-cover bg-center bg-fixed min-h-screen overflow-hidden"
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/background-image1.jpg)`,
       }}
@@ -23,9 +23,9 @@ const Choose = () => {
             darkMode ? "dark_logo.png" : "light_logo.png"
           }`}
           alt="FreelanceHub"
-          className="w-52 md:w-60 ml-4 text-white"
+          className="w-44 md:w-60 ml-4 text-white"
         />
-        <div className="flex items-center gap-5 mr-10 text-xl">
+        <div className="flex items-center gap-5 mr-10 md:text-xl">
           <div className="cursor-pointer hover:text-blue-500 font-semibold">
             LogIn
           </div>

@@ -49,7 +49,7 @@ const TopUsers = () => {
   };
 
   return (
-    <div className="relative overflow-hidden max-w-[25rem]">
+    <div className="relative overflow-hidden max-w-72 md:max-w-96">
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {users.map((user) => (
           <div key={user.id} className="flex-shrink-0 w-full">
@@ -57,7 +57,7 @@ const TopUsers = () => {
               <img
                 src={`${process.env.PUBLIC_URL}/${user.image}`}
                 alt={user.name}
-                className="rounded-full w-40 h-40 object-cover mb-4"
+                className="rounded-full w-32 md:w-40 h-32 md:h-40 object-cover mb-4"
               />
               <div className="text-xl font-bold">{user.name}</div>
               <div className="">{user.earnings}</div>

@@ -85,7 +85,7 @@ const Header = () => {
             darkMode ? "dark_logo.png" : "light_logo.png"
           }`}
           alt="FreelanceHub"
-          className="w-52 md:w-60 ml-4 text-white"
+          className="w-44 md:w-60 ml-4 text-white"
         />
       </Link>
 
@@ -94,7 +94,7 @@ const Header = () => {
           // For small screens, render a dropdown for jobs
           <div
             onClick={eventDropdown}
-            className="group relative flex items-center gap-2 cursor-pointer"
+            className="group relative flex items-center gap-1 cursor-pointer"
             ref={eventDropdownRef}
           >
             {/* Toggle icons for job dropdown */}
