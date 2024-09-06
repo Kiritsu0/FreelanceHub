@@ -85,16 +85,16 @@ const Header = () => {
             darkMode ? "dark_logo.png" : "light_logo.png"
           }`}
           alt="FreelanceHub"
-          className="w-44 md:w-60 ml-4 text-white"
+          className="w-40 md:w-60 ml-4 text-white"
         />
       </Link>
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-3 md:gap-5">
         {isSmallScreen ? (
           // For small screens, render a dropdown for jobs
           <div
             onClick={eventDropdown}
-            className="group relative flex items-center gap-1 cursor-pointer"
+            className="group relative flex items-center cursor-pointer"
             ref={eventDropdownRef}
           >
             {/* Toggle icons for job dropdown */}
@@ -164,7 +164,7 @@ const Header = () => {
         )}
 
         {/* Account dropdown menu */}
-        <div className="flex items-center gap-5 mr-8">
+        <div className="flex items-center gap-5 mr-5 md:mr-8">
           <div
             onClick={dropdown}
             className="bg-blue-800 dark:bg-blue-500 max-w-24 md:max-w-36 group relative flex items-center gap-3 border-slate-400 border-2 shadow-md shadow-slate-500 cursor-pointer py-1 pl-1 pr-2 rounded-3xl hover:shadow-xl"

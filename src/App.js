@@ -15,8 +15,8 @@ import Loader from "./components/loader";
 function App() {
   return (
     <div>
-      <HashRouter>
-        <Context>
+      <Context>
+        <HashRouter>
           <Loader />
           <Routes>
             <Route path="/" element={<Choose />} />
@@ -30,8 +30,9 @@ function App() {
               <Route path="/organization/createdJobs" element={<CreatedJobsCards />} />
             </Route>
           </Routes>
-        </Context>
-      </HashRouter>
+        </HashRouter>
+      </Context>
+
     </div>
   );
 }
