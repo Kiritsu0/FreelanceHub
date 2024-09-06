@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/FreelanceHub/static/css/main.8798b87f.css",
-    "main.js": "/FreelanceHub/static/js/main.9d1e881d.js",
+    "main.css": "/FreelanceHub/static/css/main.d8e596ca.css",
+    "main.js": "/FreelanceHub/static/js/main.25a6d700.js",
     "static/js/453.1c387bb1.chunk.js": "/FreelanceHub/static/js/453.1c387bb1.chunk.js",
     "index.html": "/FreelanceHub/index.html",
-    "main.8798b87f.css.map": "/FreelanceHub/static/css/main.8798b87f.css.map",
-    "main.9d1e881d.js.map": "/FreelanceHub/static/js/main.9d1e881d.js.map",
+    "main.d8e596ca.css.map": "/FreelanceHub/static/css/main.d8e596ca.css.map",
+    "main.25a6d700.js.map": "/FreelanceHub/static/js/main.25a6d700.js.map",
     "453.1c387bb1.chunk.js.map": "/FreelanceHub/static/js/453.1c387bb1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8798b87f.css",
-    "static/js/main.9d1e881d.js"
+    "static/css/main.d8e596ca.css",
+    "static/js/main.25a6d700.js"
   ]
 }
