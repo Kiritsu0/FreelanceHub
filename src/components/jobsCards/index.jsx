@@ -70,6 +70,7 @@ const Jobcard = ({job}) => {
               : "#"
           }
           target="_blank"
+          rel="noreferrer"
           className="mt-2 w-4/12 rounded-md text-center bg-blue-600 p-2 text-white hover:bg-blue-700"
           onClick={() =>
             setApplied((previous) =>
