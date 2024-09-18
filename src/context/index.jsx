@@ -81,7 +81,7 @@ function Context({ children }) {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "6e88e85944msh0569acbaf56dc49p175d57jsn775955742f76", // API key for authentication
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY, // API key for authentication
         "X-RapidAPI-Host": "jobs-api14.p.rapidapi.com", // API host
       },
     };
@@ -90,7 +90,7 @@ function Context({ children }) {
       setLoading(true); // Set loading state to true before fetching data
   
       const response = await fetch(url, options);
-  
+
       // Check if the response is not ok (i.e., status is not in the 200–299 range)
       if (!response.ok) {
         // Handle the error based on the status code
@@ -100,7 +100,7 @@ function Context({ children }) {
         setLoading(false);
         return;
       }
-  
+
       const result = await response.json(); // Parsing the response JSON
 
       if (result?.jobs) {
