@@ -1,9 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 // Creating a global context for managing shared state across components
 export const GlobalContext = createContext(null);
 
 function Context({ children }) {
+  const path = useLocation();
   // States for managing form inputs and data
   const [jobTitle, setJobTitle] = useState(""); // State for job title input
   const [location, setLocation] = useState(""); // State for location input
@@ -158,12 +160,11 @@ function Context({ children }) {
         {/* Conditional class for dark mode */}
         <div
           className="min-h-screen bg-cover bg-center bg-fixed"
-          style={{
+          style={path.pathname !== "/" ? {
             backgroundImage: `url(${process.env.PUBLIC_URL}/background-image2.jpg)`,
-          }}
+          } : null }
         >
           {" "}
-          {/* Main container with dynamic background based on dark mode */}
           {children} {/* Render children components */}
         </div>
       </div>

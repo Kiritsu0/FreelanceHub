@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import Choose from "./pages/choose";
 import Freelancer from "./pages/home/freelancer";
@@ -15,8 +15,8 @@ import Loader from "./components/loader";
 function App() {
   return (
     <div>
-      <Context>
-        <BrowserRouter>
+      <HashRouter>
+        <Context>
           <Loader />
           <Routes>
             <Route path="/" element={<Choose />} />
@@ -30,9 +30,8 @@ function App() {
               <Route path="/organization/createdJobs" element={<CreatedJobsCards />} />
             </Route>
           </Routes>
-        </BrowserRouter>
-      </Context>
-
+        </Context>
+      </HashRouter>
     </div>
   );
 }
