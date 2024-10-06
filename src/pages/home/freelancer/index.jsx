@@ -5,6 +5,7 @@ import SearchBar from "../../../components/searchBar";
 import { useContext } from "react";
 import { Grid } from "react-loader-spinner";
 import Footer from "../../../components/footer";
+import { Helmet } from "react-helmet-async";
 
 const Freelancer = () => {
   // Extract the loading state from GlobalContext
@@ -12,6 +13,35 @@ const Freelancer = () => {
 
   return (
     <div className="mt-3 pb-5">
+      <Helmet>
+        <meta
+          name="description"
+          content="Find freelance jobs that match your skills and experience. Easily search and filter through opportunities to connect with clients and grow your career"
+        />
+        <meta
+          name="keywords"
+          content="freelance jobs, find freelancers, remote work, freelance marketplace, job listings, freelancers, online jobs"
+        />
+        <meta
+          property="og:title"
+          content="FreelanceHub - Find Your Next Freelance Job"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Search and apply for top freelance jobs across various industries. Start your freelance career today!"
+        />
+        <meta
+          property="og:url"
+          content="https://freelancehub0.netlify.app/#/freelancer"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="FreelanceHub" />
+        <link
+          rel="canonical"
+          href="https://freelancehub0.netlify.app/#/freelancer"
+        />
+        <title>Freelancer</title>
+      </Helmet>
       {/* Render the search bar component */}
       <SearchBar />
 
@@ -32,7 +62,7 @@ const Freelancer = () => {
       ) : (
         // Render Jobcard component when not loading
         <div className="">
-          <div className="flex flex-col items-center justify-center gap-5 h-full w-full">
+          <main className="flex flex-col items-center justify-center gap-5 h-full w-full">
             {/* If there is no job data, display a message and icon */}
             {data.length === 0 ? (
               <div className="flex flex-col justify-center h-96 font-bold mt-14 md:mt-0 text-center">
@@ -43,9 +73,8 @@ const Freelancer = () => {
               </div>
             ) : (
               data.map((job) => <Jobcard job={job} key={job.id} />)
-            )
-          }
-          </div>
+            )}
+          </main>
           <Footer />
         </div>
       )}

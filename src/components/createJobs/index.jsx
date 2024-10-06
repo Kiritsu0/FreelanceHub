@@ -104,7 +104,7 @@ function CreateJobs() {
   };
 
   return (
-    <div className="mx-5 mb-20">
+    <main className="mx-5 mb-20">
       <form
         onSubmit={handleSubmit}
         className="mx-auto max-w-[50rem] p-3 dark:bg-blue-800 flex flex-col bg-white rounded-md"
@@ -155,7 +155,7 @@ function CreateJobs() {
           Create Job
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 
