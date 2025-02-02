@@ -72,32 +72,32 @@ function Context({ children }) {
     if (event) {
       event.preventDefault(); // Prevent default form submission behavior
     }
-  
+
     // Encoding jobTitle and location inputs for URL query parameters
     const encodedJobTitle = encodeURIComponent(jobTitle);
     const encodedLocation = encodeURIComponent(location);
-  
+
     // Constructing the API request URL with query parameters
-    const url = `https://jobs-api14.p.rapidapi.com/list?query=${encodedJobTitle}%20Developer&location=${encodedLocation}%20States&distance=1.0&language=en_GB&remoteOnly=false&datePosted=${date}&employmentTypes=${employmentTypes}%3Bparttime%3Bintern%3Bcontractor&index=0`;
-  
+    const url = `https://jobs-api14.p.rapidapi.com/v2/list?query=${encodedJobTitle}&location=${encodedLocation}&autoTranslateLocation=true&remoteOnly=false&employmentTypes=${employmentTypes}&datePosted=${date}`;
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY, // API key for authentication
-        "X-RapidAPI-Host": "jobs-api14.p.rapidapi.com", // API host
-      },
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'jobs-api14.p.rapidapi.com'
+      }
     };
-  
+
     try {
       setLoading(true); // Set loading state to true before fetching data
-  
+
       const response = await fetch(url, options);
+      console.log(response)
 
       // Check if the response is not ok (i.e., status is not in the 200–299 range)
       if (!response.ok) {
         // Handle the error based on the status code
         console.error(`Error: ${response.status} - ${response.statusText}`);
-        
+
         // Set loading to false and potentially update the UI to show the error
         setLoading(false);
         return;
@@ -117,7 +117,6 @@ function Context({ children }) {
       setLoading(false); // Set loading to false after the request completes
     }
   };
-
 
   return (
     <GlobalContext.Provider
@@ -160,9 +159,13 @@ function Context({ children }) {
         {/* Conditional class for dark mode */}
         <div
           className="min-h-screen bg-cover bg-center bg-fixed"
-          style={path.pathname !== "/" ? {
-            backgroundImage: `url(${process.env.PUBLIC_URL}/background-image2.jpg)`,
-          } : null }
+          style={
+            path.pathname !== "/"
+              ? {
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/background-image2.jpg)`,
+                }
+              : null
+          }
         >
           {" "}
           {children} {/* Render children components */}
